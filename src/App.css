@@ -73,7 +73,6 @@ body {
     border: none;
     outline: none;
     background-color: darkgreen;
-    font-size: 1.2rem;
     font-weight: 600;
     cursor: pointer;
 }
@@ -94,6 +93,10 @@ body {
 
 .range input {
     width: 100%;
+}
+
+.range label {
+    width: 30%;
 }
 
 .checkbox {
