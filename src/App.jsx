@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState, useRef } from 'react'
 import './App.css'
 
 function App() {
@@ -8,7 +8,11 @@ function App() {
   const [numberAllowed, setNumberAllowed] = useState(false)
   const [charAllowed, setCharAllowed] = useState(false)
 
+  // useRef hook
+  const passwordRef = useRef(null)
 
+
+  // useCallback hook
   const passwordGeneretor = useCallback(() => {
 
     let pass = ''
@@ -27,6 +31,13 @@ function App() {
 
   }, [length, numberAllowed, charAllowed, setPassword])
 
+
+  const copyPasswordToClipboard = useCallback(() => {
+
+  }, [password])
+
+
+  // useEffect hook
   useEffect(() => {
 
     passwordGeneretor()
@@ -46,7 +57,7 @@ function App() {
           </div>
 
           <div className='pass-gen-input'>
-            <div><input type="text" readOnly value={password} /><button>Copy</button></div>
+            <div><input type="text" readOnly value={password} ref={passwordRef} /><button onClick={copyPasswordToClipboard}>Copy</button></div>
           </div>
 
           <div className='pass-gen-length'>
